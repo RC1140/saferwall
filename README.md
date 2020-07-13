@@ -48,6 +48,26 @@ Steps to deploy in AWS:
 6. Logs are found elasticsearch:
 <p align="center"><img src="https://i.imgur.com/6TnK2jR.png" width="auto" height="auto"></p>
 
+Steps to deploy in on baremetal (minikube):
+(This still needs to be improved)
+- Clone the project: `git clone https://github.com/saferwall/saferwall`
+- Rename the `example.env` to `.env` and fill the secrets according to which AVs you want to have.
+- Disable the couch base cluster in the helm values file
+- cd deployments/saferwall && helm dependency update
+- Build the different containers
+  - make ui-build
+    - docker build  -t saferwall/ui -f ui/Dockerfile ui/
+  - make backend-build
+    - docker build  -t saferwall/backend -f build/docker/Dockerfile.backend web/
+  - make website-build
+    - docker build  -t saferwall/website -f build/docker/Dockerfile.website website/
+  - make consumer-build
+    - docker build  -t saferwall/consumer -f build/docker/Dockerfile.consumer .
+  - export AV_VENDOR=sophos
+  - make multiav-build-av
+  - make helm-init-cert-manager
+  - helm install deployments/saferwall --generate-name
+
 ## Built with:
 
 - Golang mostly.

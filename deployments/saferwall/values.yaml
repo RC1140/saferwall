@@ -81,9 +81,9 @@ kibana:
 
 ####### COUCHBASE #########
 couchbase-cluster:
-  enabled: true
+  enabled: false
   couchbaseCluster:
-    create: true
+    create: false
     authSecretOverride: "cb-admin-secret"
     baseImage: "couchbase/server"
     version: "enterprise-6.0.1"
@@ -198,7 +198,7 @@ backend:
   image:
     repository: saferwall/backend
     tag: latest
-    pullPolicy: Always
+    pullPolicy: Never
   service:
     type: ClusterIP
     port: 80
@@ -213,7 +213,7 @@ frontend:
   image:
     repository: saferwall/ui
     tag: latest
-    pullPolicy: Always
+    pullPolicy: Never
   service:
     type: ClusterIP
     port: 80
@@ -228,7 +228,7 @@ website:
   image:
     repository: saferwall/website
     tag: latest
-    pullPolicy: Always
+    pullPolicy: Never
   service:
     type: ClusterIP
     port: 80
@@ -254,7 +254,7 @@ consumer:
   image:
     repository: saferwall/consumer
     tag: latest
-    pullPolicy: Always
+    pullPolicy: Never
 
 ########### MULTIAV ###########
 multiav:

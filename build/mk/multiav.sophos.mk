@@ -9,9 +9,9 @@ install-sophos:	## install Sophos Anti-Virus for Linux
 ifdef SAFERWALL_DEV
 	cp  $(ROOT_DIR)/build/multiav/sophos/sav-linux-free-9.tgz $(SOPHOS_INSTALL_ARCHIVE)
 endif
-ifdef SAFERWALL_TEST
+
 	wget $(SOPHOS_URL) -P $(SOPHOS_TMP)
-endif
+
 	tar zxvf $(SOPHOS_INSTALL_ARCHIVE) -C $(SOPHOS_TMP)
 	$(SOPHOS_INSTALL_SCRIPT) $(SOPHOS_INSTALL_DIR) $(SOPHOS_INSTALL_ARGS)
 	make update-sophos
