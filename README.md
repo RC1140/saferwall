@@ -55,6 +55,7 @@ Steps to deploy in on baremetal (minikube):
 - Disable the couch base cluster in the helm values file
 - cd deployments/saferwall && helm dependency update
 - Build the different containers
+  - Before running any of the builds below , make sure to eval the minikube env variables into your shell using the command, eval $(minikube docker-env)
   - make ui-build
     - docker build  -t saferwall/ui -f ui/Dockerfile ui/
   - make backend-build
